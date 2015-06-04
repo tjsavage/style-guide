@@ -70,24 +70,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             Polymer({
               is: 'awesome-sauce',
 
-        Element-level can be added at the **end** of the element summary, as part of the same comment block. 
+        Element-level can be added at the **end** of the element summary, as part of the same comment block.
         Two tags are supported currently:
 
         *   `@hero`. Specifies a hero image.
 
                 @hero path/to/image
 
-        *   `@demo`. Specifies a demo, with optional path and description. If path and description are omitted,
-            the standard demo path (`./demo/`) is assumed.
+        *   `@demo`. Specifies the path to a demo, with optional description.
 
-                @demo
+                @demo demo/index.html
 
                 @demo path/to/demo1  Super cool demo, with sharks!
                 @demo path/to/demo2  Even cooler demo. The sharks have lasers!
 
-        Other tags will be ignored. 
-                
-        **Note: Any tags placed _before_ the end of the comment block are interpreted as the end 
+        Other tags will be ignored.
+
+        **Note: Any tags placed _before_ the end of the comment block are interpreted as the end
         of the element summary.**
 
       </script></marked-element>
@@ -118,7 +117,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             sauce: Object,
 
         Private properties should be prefixed with `_`
-        
+
             /** @return {string} An awesome message */
             _getMessage: function() {
 
@@ -154,7 +153,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <a is="sg-header">Events</a>
       <marked-element><script type="text/markdown">
         <p class="tldr">
-          Events must be annotated explicitly with an <code>@event</code> tag. 
+          Events must be annotated explicitly with an <code>@event</code> tag.
         </p>
 
         Event properties are documented with the `@param` tag, just like method parameters.
@@ -178,17 +177,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <p class="tldr">Like an element, but add <code>@polymerBehavior</code>.</p>
 
         Include a behavior summary, just like an element summary, but ending with a
-        `@polymerBehavior` tag. The behavior name can be specified explicitly if the 
-        doc parser can't infer it correctly. 
+        `@polymerBehavior` tag. The behavior name can be specified explicitly if the
+        doc parser is unable to infer it correctly.
 
             @polymerBehavior MyOddBehavior
 
         Document methods, properties, etc. just like an element.
 
-        For example: 
+        For example:
 
             /**
-             * Behavior that highlights stuff. 
+             * Behavior that highlights stuff.
              *
              * @polymerBehavior
              */
@@ -247,7 +246,92 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         described there can be applied here as well.
       </script></marked-element>
     </section>
+  </section>
 
+  <section>
+    <a is="sg-header">Bower</a>
+    <section>
+      <a is="sg-header">Bower.json</a>
+
+      <marked-element><script type="text/markdown">
+        Elements should conform generally to the following `bower.json` layout:
+
+            {
+              "name": "$ELEMENT",
+              "version": "1.0.2",
+              "description": "An element that _____",
+              "authors": [
+                "The Polymer Authors"
+              ],
+              "keywords": [
+                "web-components",
+                "polymer",
+                "..."
+              ],
+              "main": "$ELEMENT.html",
+              "private": true,
+              "repository": {
+                "type": "git",
+                "url": "git://github.com/PolymerElements/$ELEMENT"
+              },
+              "license": "http://polymer.github.io/LICENSE.txt",
+              "homepage": "https://github.com/PolymerElements/$ELEMENT",
+              "dependencies": {
+                "..."
+              },
+              "devDependencies": {
+                "..."
+              }
+            }
+      </script>
+      </marked-element>
+
+      <p>
+        See the <a href="https://github.com/polymerelements/seed-element">seed-element</a> for an example bower.json file.
+      </p>
+    </section>
+    <section>
+      <a is="sg-header">Keywords</a>
+
+      <marked-element><script type="text/markdown">
+        <p class="tldr">
+          The `keywords` property should be filled out with an array of keywords for each `bower.json` file.
+        </p>
+
+        The keywords used should be consistent across elements. All elements should have the keywords:
+
+        - `web-components`
+        - `polymer`
+
+        Additional primary keywords to use are:
+
+        - `wrapper` - any element that wraps another library
+        - `input` - any element that takes user input
+        - `textarea` - any element that provides a large textarea input
+        - `a11y` - any element that helps with accessibility
+        - `data` - any element that retrieves or deals with data
+        - `container` - any element explicitly meant to contain other elements
+        - `icon` - anything related to an icon
+        - `media` - any element that helps display media
+        - `storage` - any element that helps with storage
+        - `control` - any element that provides a UI control - checkbox, slider, etc.
+        - `overlay` - any element that provides a visual overlay
+        - `responsive` - any element that is specifically responsive
+        - `layout` - any element meant to help lay out a page
+        - `menu` - an element that is menu-related
+        - `service-worker` - any element that uses a service worker
+
+        In addition to this set, you may add additional keywords as you see fit. Try to use general terms that could exist across multiple elements. If you notice a keyword appearing across elements that is not listed above, feel free to file a PR to this repo to add it.
+
+        Do NOT use any of the following for keywords:
+
+        - The name of the element
+        - The product line name that the element is in
+        - `web-component` (singular)
+
+
+      </script></marked-element>
+    </section>
   </section>
 
 </body>
